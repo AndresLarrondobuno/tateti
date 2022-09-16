@@ -1,3 +1,4 @@
+from cmath import pi
 from tkinter import *
 from Casilla import *
 from Tablero import *
@@ -69,12 +70,22 @@ class VentanaDeTablero(Tk):
 
         boton['bg'], boton['state'] = jugadorActual.color, 'disabled'
         self.partida.tablero.casillas[numeroDeBoton].seleccionada = jugadorActual.color
+        
+        if self.partida.victoriaJugadorUno() or self.partida.victoriaJugadorDos():
+            self.felicitarAlGanador()
+            time.sleep(3)
+            self.destroy()
+        
         self.partida.nuevoTurno()
 
-        if self.partida.victoriaJugadorUno() or self.partida.victoriaJugadorDos():
-            time.sleep(1)
-            self.destroy()
 
+    def felicitarAlGanador(self):
+        if self.partida.victoriaJugadorUno():
+            Label(self, text="Felicitaciones" + self.partida.jugadorUno.nombre + ", sos el ganador!").grid(row=3, columnspan=3)
+            Label(self, text= self.partida.jugadorDos.nombre + ", hay que ser mamerto para perder en el TATETI eh... XD").grid(row=3, columnspan=3)
+        elif self.partida.victoriaJugadorDos():
+            Label(self, text="Felicitaciones" + self.partida.jugadorDos.nombre + ", sos el ganador!").grid(rowspan=3)
+            Label(self, text= self.partida.jugadorUno.nombre + ", hay que ser mamerto para perder en el TATETI eh... XD").grid()
 
         
 

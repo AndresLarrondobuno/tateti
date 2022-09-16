@@ -87,13 +87,7 @@ class Partida():
             return True #diagonal2
     
 
-    def felicitarAlGanador(self):
-        if self.victoriaJugadorUno():
-            Label(text="Felicitaciones" + self.jugadorUno.nombre + " sos el ganador!")
-            Label(text= self.jugadorDos.nombre + ", hay que ser mamerto para perder en el TATETI eh... XD")
-        elif self.victoriaJugadorDos():
-            Label(text="Felicitaciones" + self.jugadorDos.nombre + " sos el ganador!")
-            Label(text= self.jugadorUno.nombre + ", hay que ser mamerto para perder en el TATETI eh... XD")
+    
     
 
     def chequearVentanaDePedidoDeNombres(self):
